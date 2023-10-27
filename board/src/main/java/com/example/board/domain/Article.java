@@ -17,9 +17,8 @@ import java.util.Set;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(indexes = {@Index(columnList = "title"), @Index(columnList = "hashTag"), @Index(columnList = "regId"), @Index(columnList = "regDate")})
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article {
+public class Article extends AuditingFields{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,22 +38,6 @@ public class Article {
     @OrderBy("id")
     @ToString.Exclude
     private final Set<Comment> comments = new LinkedHashSet<>();
-
-    @CreatedBy
-    @Column(nullable = false, length = 100)
-    private String regId;
-
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime regDate;
-
-    @LastModifiedBy
-    @Column(nullable = false, length = 100)
-    private String modId;
-
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modDate;
 
     private Article(final String title, final String content, final String hashTag) {
         this.title = title;
