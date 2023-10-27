@@ -17,9 +17,8 @@ import java.util.Optional;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(indexes = {@Index(columnList = "content"), @Index(columnList = "regId"), @Index(columnList = "regDate")})
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Comment {
+public class Comment extends AuditingFields{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,22 +30,6 @@ public class Comment {
     @Setter
     @Column(nullable = false, length = 500)
     private String content;
-
-    @CreatedBy
-    @Column(nullable = false, length = 100)
-    private String regId;
-
-    @CreatedDate
-    @Column(nullable = false)
-    private LocalDateTime regDate;
-
-    @LastModifiedBy
-    @Column(nullable = false, length = 100)
-    private String modId;
-
-    @LastModifiedDate
-    @Column(nullable = false)
-    private LocalDateTime modDate;
 
     private Comment(final Article article, final String content) {
         this.article = article;
