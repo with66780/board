@@ -16,9 +16,9 @@ import java.util.Optional;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(indexes = {@Index(columnList = "content"), @Index(columnList = "regId"), @Index(columnList = "regDate")})
+@Table(indexes = {@Index(columnList = "content"), @Index(columnList = "createdBy"), @Index(columnList = "createdAt")})
 @Entity
-public class Comment extends AuditingFields{
+public class Comment extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -16,9 +16,9 @@ import java.util.Set;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(indexes = {@Index(columnList = "title"), @Index(columnList = "hashTag"), @Index(columnList = "regId"), @Index(columnList = "regDate")})
+@Table(indexes = {@Index(columnList = "title"), @Index(columnList = "hashTag"), @Index(columnList = "createdBy"), @Index(columnList = "createdAt")})
 @Entity
-public class Article extends AuditingFields{
+public class Article extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
