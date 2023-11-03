@@ -1,24 +1,16 @@
 package com.example.board.domain;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.Optional;
 
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(indexes = {@Index(columnList = "content"), @Index(columnList = "regId"), @Index(columnList = "regDate")})
+@Table(indexes = {@Index(columnList = "content"), @Index(columnList = "createdBy"), @Index(columnList = "createdAt")})
 @Entity
-public class Comment extends AuditingFields{
+public class Comment extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

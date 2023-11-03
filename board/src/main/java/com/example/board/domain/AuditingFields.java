@@ -21,19 +21,19 @@ import java.time.LocalDateTime;
 public class AuditingFields {
     @CreatedBy
     @Column(nullable = false, length = 100, updatable = false)
-    private String regId;
+    private String createdBy;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @CreatedDate
     @Column(nullable = false, updatable = false)
-    private LocalDateTime regDate;
+    private LocalDateTime createdAt;
 
     @LastModifiedBy
     @Column(nullable = false, length = 100)
-    private String modId;
+    private String modifiedBy;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @LastModifiedDate
     @Column(nullable = false)
-    private LocalDateTime modDate;
+    private LocalDateTime modifiedAt;
 }
